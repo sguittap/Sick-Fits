@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/shane-fcb8e3/superSick-fits/dev
-# timestamp: Fri Oct 18 2019 13:15:07 GMT-0400 (Eastern Daylight Time)
+# timestamp: Mon Oct 28 2019 17:20:39 GMT-0400 (Eastern Daylight Time)
 
 type AggregateItem {
   count: Int!
@@ -14,6 +14,8 @@ type BatchPayload {
   count: Long!
 }
 
+scalar DateTime
+
 type Item implements Node {
   id: ID!
   title: String!
@@ -21,6 +23,7 @@ type Item implements Node {
   image: String
   largeImage: String
   price: Int!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -40,6 +43,7 @@ input ItemCreateInput {
   image: String
   largeImage: String
   price: Int!
+  createdAt: DateTime!
 }
 
 """An edge in a connection."""
@@ -64,6 +68,8 @@ enum ItemOrderByInput {
   largeImage_DESC
   price_ASC
   price_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type ItemPreviousValues {
@@ -73,6 +79,7 @@ type ItemPreviousValues {
   image: String
   largeImage: String
   price: Int!
+  createdAt: DateTime!
 }
 
 type ItemSubscriptionPayload {
@@ -120,6 +127,7 @@ input ItemUpdateInput {
   image: String
   largeImage: String
   price: Int
+  createdAt: DateTime
 }
 
 input ItemUpdateManyMutationInput {
@@ -128,6 +136,7 @@ input ItemUpdateManyMutationInput {
   image: String
   largeImage: String
   price: Int
+  createdAt: DateTime
 }
 
 input ItemWhereInput {
@@ -361,6 +370,28 @@ input ItemWhereInput {
 
   """All values greater than or equal the given value."""
   price_gte: Int
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 input ItemWhereUniqueInput {
