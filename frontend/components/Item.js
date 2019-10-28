@@ -5,6 +5,7 @@ import Title from './styles/Title';
 import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
+import DeleteItem from '../components/DeleteItem';
 
 
 export default class Item extends Component {
@@ -32,7 +33,7 @@ export default class Item extends Component {
                     query:{id: item.id}
                 }}><a>Edit ✏️ </a></Link>
                 <button>Add to Cart</button>
-                <button>Delete</button>
+                <DeleteItem id={item.id}>Delete this item</DeleteItem>
             </div>
         </ItemStyles>
     }
