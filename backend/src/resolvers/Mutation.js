@@ -30,20 +30,20 @@ const Mutations = {
     async signup(parent, args, ctx, info){
         args.email = args.email.toLowerCase();
         const password = await bcrypt.hash(args.password, 10);
-        const user = ctx.db.mutation.createUser({
+        const user = await ctx.db.mutation.createUser({
             data:{
                 ...args,
                 password,
                 permissions: {set: ['USER']}
-            }
+            },
         },info);
-        const token = jwt.sign({userID: user.id}, process.env.APP_SECRET);
+        const token = jwt.sign({userId: user.id}, process.env.APP_SECRET);
         ctx.response.cookie('token', token, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
         });
         return user
-    }
+    },
 };
 
 module.exports = Mutations;

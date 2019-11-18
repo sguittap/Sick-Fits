@@ -29,14 +29,15 @@ class Signup extends Component {
         return (
             <Mutation mutation={SIGNUP_MUTATION} variables={this.state}>
                 {(signup, {error, loading})=> (
-                    <Form method='POST' onSubmit={(e) => {
+                    <Form method='POST' onSubmit={async e => {
                         e.preventDefault();
-                        signup();
+                        await signup();
+                        this.setState({name:'', password:'', email:''})
                     }}>
                         <fieldset disabled={loading} aria-busy={loading}>
                             <h2>Signup for an Account</h2>
                             <Error error={error}/>
-                            <label htmlfor='email'>
+                            <label htmlFor='email'>
                                 Email
                                 <input 
                                     type='email'
@@ -46,7 +47,7 @@ class Signup extends Component {
                                     onChange={this.saveToState}/>
                             </label>
                             
-                            <label htmlfor='name'>
+                            <label htmlFor='name'>
                                 Name
                                 <input 
                                     type='text'
@@ -56,7 +57,7 @@ class Signup extends Component {
                                     onChange={this.saveToState}/>
                             </label>
                             
-                            <label htmlfor='password'>
+                            <label htmlFor='password'>
                                 Password
                                 <input 
                                     type='password'
