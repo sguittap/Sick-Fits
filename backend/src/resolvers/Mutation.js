@@ -92,7 +92,7 @@ const Mutations = {
             where: {
                 resetToken: args.resetToken,
                 resetTokenExpiry_gte: Date.now() - 3600000
-            }
+            },
         });
         if(!user){
             throw new Error('This token is either invalid or expired!')
