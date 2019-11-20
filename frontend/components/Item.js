@@ -6,7 +6,7 @@ import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from '../components/DeleteItem';
-
+import AddToCart from './AddToCart';
 
 export default class Item extends Component {
     static propTypes = {
@@ -32,7 +32,7 @@ export default class Item extends Component {
                     pathname:'update',
                     query:{id: item.id}
                 }}><a>Edit ✏️ </a></Link>
-                <button>Add to Cart</button>
+                <AddToCart id={item.id} />
                 <DeleteItem id={item.id}>Delete this item</DeleteItem>
             </div>
         </ItemStyles>
