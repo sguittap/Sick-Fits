@@ -189,7 +189,7 @@ const Mutations = {
         );
         if (!cartItem) throw new Error('No CartItem Found!');
         if (cartItem.user.id !== ctx.request.userId) {
-            throw new Error('Cheatin huhhhh');
+            throw new Error('Thats not yours...');
         };
         return ctx.db.mutation.deleteCartItem(
             {where: { id: args.id },},info);
