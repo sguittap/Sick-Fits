@@ -229,7 +229,7 @@ const Mutations = {
           delete orderItem.id;
           return orderItem;
         });
-       const order = await ctx.db.mutation.createOrder({
+        const order = await ctx.db.mutation.createOrder({
           data: {
             total: charge.amount,
             charge: charge.id,
@@ -244,7 +244,7 @@ const Mutations = {
           },
         });
         return order;
-      },
+    },
 };
 
 module.exports = Mutations;

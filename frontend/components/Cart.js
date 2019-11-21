@@ -1,17 +1,16 @@
 import React from 'react';
 import {Query, Mutation} from 'react-apollo';
 import gql from 'graphql-tag';
+import {adopt} from 'react-adopt';
+import User from './User';
 import CartStyles from './styles/CartStyles';
 import Supreme from './styles/Supreme';
 import CloseButton from './styles/CloseButton';
 import SickButton from './styles/SickButton';
-import User from './User';
 import CartItem from './CartItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
-import {adopt} from 'react-adopt';
 import TakeMyMoney from './TakeMyMoney';
-
 
 const LOCAL_STATE_QUERY = gql`
   query {
@@ -31,6 +30,7 @@ const Composed = adopt({
   localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>,
 });
 
+
 const Cart = () => (
   <Composed>
     {({ user, toggleCart, localState }) => {
@@ -44,8 +44,7 @@ const Cart = () => (
             </CloseButton>
             <Supreme>{me.name}'s Cart</Supreme>
             <p>
-              You Have {me.cart.length} Item{me.cart.length === 1 ? '' : 's'} in your cart.<br/>
-              <h4>Test Credit Card <br/>#4242 4242 4242 4242<br/>02/22 #222</h4>
+              You Have {me.cart.length} Item{me.cart.length === 1 ? '' : 's'} in your cart.
             </p>
           </header>
           <ul>{me.cart.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}</ul>

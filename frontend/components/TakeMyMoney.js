@@ -28,15 +28,21 @@ function totalItems(cart) {
 };
 
 class TakeMyMoney extends React.Component {
-    onToken = (res, createOrder) => {
-        createOrder({
+    onToken = async (res, createOrder) => {
+        NProgress.start();
+        const order = await createOrder({
           variables: {
             token: res.id,
           },
         }).catch(err => {
           alert(err.message);
         });
-      };
+        Router.push({
+          pathname: '/order',
+          query: { id: order.data.createOrder.id },
+        });
+    };
+
   render() {
     return (
         <User>
