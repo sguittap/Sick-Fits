@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -179,10 +179,10 @@ DisplayError.propTypes = {
 
 /***/ }),
 
-/***/ "./components/Order.js":
-/*!*****************************!*\
-  !*** ./components/Order.js ***!
-  \*****************************/
+/***/ "./components/OrderList.js":
+/*!*********************************!*\
+  !*** ./components/OrderList.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -190,20 +190,20 @@ DisplayError.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apollo */ "react-apollo");
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "date-fns");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/head */ "next/head");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-apollo */ "react-apollo");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "date-fns");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "next/link");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lib/formatMoney */ "./lib/formatMoney.js");
-/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
-/* harmony import */ var _styles_OrderStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./styles/OrderStyles */ "./components/styles/OrderStyles.js");
-var _jsxFileName = "/Users/shaneguittap/Desktop/WesBossApp/Advanced-React/sick-fits/frontend/components/Order.js";
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ErrorMessage */ "./components/ErrorMessage.js");
+/* harmony import */ var _lib_formatMoney__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/formatMoney */ "./lib/formatMoney.js");
+/* harmony import */ var _styles_OrderItemStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./styles/OrderItemStyles */ "./components/styles/OrderItemStyles.js");
+var _jsxFileName = "/Users/shaneguittap/Desktop/WesBossApp/Advanced-React/sick-fits/frontend/components/OrderList.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -223,10 +223,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  query SINGLE_ORDER_QUERY($id: ID!) {\n    order(id: $id) {\n      id\n      charge\n      total\n      createdAt\n      user {\n        id\n      }\n      items {\n        id\n        title\n        description\n        price\n        image\n        quantity\n      }\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  query USER_ORDERS_QUERY {\n    orders(orderBy: createdAt_DESC) {\n      id\n      total\n      createdAt\n      items {\n        id\n        title\n        price\n        description\n        quantity\n        image\n      }\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -246,237 +244,158 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var SINGLE_ORDER_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_5___default()(_templateObject());
+var USER_ORDERS_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_5___default()(_templateObject());
+var orderUl = styled_components__WEBPACK_IMPORTED_MODULE_4___default.a.ul.withConfig({
+  displayName: "OrderList__orderUl",
+  componentId: "rwafy5-0"
+})(["display:grid;grid-gap:4rem;grid-template-columns:repeat(auto-fit,minmax(40%,1fr));"]);
 
-var Order =
+var OrderList =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Order, _React$Component);
+  _inherits(OrderList, _React$Component);
 
-  function Order() {
-    _classCallCheck(this, Order);
+  function OrderList() {
+    _classCallCheck(this, OrderList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Order).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(OrderList).apply(this, arguments));
   }
 
-  _createClass(Order, [{
+  _createClass(OrderList, [{
     key: "render",
     value: function render() {
-      var _this = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Query"], {
-        query: SINGLE_ORDER_QUERY,
-        variables: {
-          id: this.props.id
-        },
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Query"], {
+        query: USER_ORDERS_QUERY,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 38
         },
         __self: this
       }, function (_ref) {
-        var data = _ref.data,
-            error = _ref.error,
-            loading = _ref.loading;
-        if (error) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          error: error,
+        var orders = _ref.data.orders,
+            loading = _ref.loading,
+            error = _ref.error;
+        if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
+          },
+          __self: this
+        }, "Loading...");
+        if (error) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          erorr: error,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 41
           },
           __self: this
         });
-        if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 43
           },
           __self: this
-        }, "Loading...");
-        var order = data.order;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_OrderStyles__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 44
+          },
+          __self: this
+        }, "You have ", orders.length, " orders"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("orderUl", {
           __source: {
             fileName: _jsxFileName,
             lineNumber: 45
           },
           __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 46
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 47
-          },
-          __self: this
-        }, "Sick Fits - Order ", order.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 49
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 50
-          },
-          __self: this
-        }, "Order ID:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 51
-          },
-          __self: this
-        }, _this.props.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 53
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 54
-          },
-          __self: this
-        }, "Charge"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 55
-          },
-          __self: this
-        }, order.charge)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 57
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 58
-          },
-          __self: this
-        }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 59
-          },
-          __self: this
-        }, Object(date_fns__WEBPACK_IMPORTED_MODULE_3__["format"])(new Date(order.createdAt), 'MMMM d, yyyy h:mm a'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 61
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 62
-          },
-          __self: this
-        }, "Order Total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 63
-          },
-          __self: this
-        }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(order.total))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 65
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 66
-          },
-          __self: this
-        }, "Item Count"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 67
-          },
-          __self: this
-        }, order.items.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "items",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 69
-          },
-          __self: this
-        }, order.items.map(function (item) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "order-item",
-            key: item.id,
+        }, orders.map(function (order) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_OrderItemStyles__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            key: order.id,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 71
+              lineNumber: 47
             },
             __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: item.image,
-            alt: item.title,
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+            href: {
+              pathname: '/order',
+              query: {
+                id: order.id
+              }
+            },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 72
+              lineNumber: 48
             },
             __self: this
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "item-details",
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 73
+              lineNumber: 52
             },
             __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "order-meta",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 74
+              lineNumber: 53
             },
             __self: this
-          }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 75
+              lineNumber: 54
             },
             __self: this
-          }, "Qty: ", item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          }, order.items.reduce(function (a, b) {
+            return a + b.quantity;
+          }, 0), " Items"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 76
+              lineNumber: 55
             },
             __self: this
-          }, "Each: ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          }, order.items.length, " Products"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 77
+              lineNumber: 56
             },
             __self: this
-          }, "SubTotal: ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price * item.quantity)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          }, Object(date_fns__WEBPACK_IMPORTED_MODULE_2__["formatDistance"])(new Date(order.createdAt), new Date()), " ago"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 78
+              lineNumber: 57
             },
             __self: this
-          }, item.description)));
+          }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_7__["default"])(order.total))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "images",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 59
+            },
+            __self: this
+          }, order.items.map(function (item) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              key: item.id,
+              src: item.image,
+              alt: item.title,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 61
+              },
+              __self: this
+            });
+          })))));
         })));
       });
     }
   }]);
 
-  return Order;
+  return OrderList;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-_defineProperty(Order, "propTypes", {
-  id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
-});
-
-/* harmony default export */ __webpack_exports__["default"] = (Order);
+;
+/* harmony default export */ __webpack_exports__["default"] = (OrderList);
 
 /***/ }),
 
@@ -868,10 +787,10 @@ var Form = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withCon
 
 /***/ }),
 
-/***/ "./components/styles/OrderStyles.js":
-/*!******************************************!*\
-  !*** ./components/styles/OrderStyles.js ***!
-  \******************************************/
+/***/ "./components/styles/OrderItemStyles.js":
+/*!**********************************************!*\
+  !*** ./components/styles/OrderItemStyles.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -880,19 +799,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
 
-var OrderStyles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
-  displayName: "OrderStyles",
-  componentId: "sc-4oqalm-0"
-})(["max-width:1000px;margin:0 auto;border:1px solid ", ";box-shadow:", ";padding:2rem;border-top:10px solid red;& > p{display:grid;grid-template-columns:1fr 5fr;margin:0;border-bottom:1px solid ", ";span{padding:1rem;&:first-child{font-weight:900;text-align:right;}}}.order-item{border-bottom:1px solid ", ";display:grid;grid-template-columns:300px 1fr;align-items:center;grid-gap:2rem;margin:2rem 0;padding-bottom:2rem;img{width:100%;object-fit:cover;}}"], function (props) {
-  return props.theme.offWhite;
-}, function (props) {
+var OrderItemStyles = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.li.withConfig({
+  displayName: "OrderItemStyles",
+  componentId: "fbwo89-0"
+})(["box-shadow:", ";list-style:none;padding:2rem;border:1px solid ", ";h2{border-bottom:2px solid red;margin-top:0;margin-bottom:2rem;padding-bottom:2rem;}.images{display:grid;grid-gap:10px;grid-template-columns:repeat(auto-fit,minmax(0,1fr));margin-top:1rem;img{height:200px;object-fit:cover;width:100%;}}.order-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(20px,1fr));display:grid;grid-gap:1rem;text-align:center;& > *{margin:0;background:rgba(0,0,0,0.03);padding:1rem 0;}strong{display:block;margin-bottom:1rem;}}"], function (props) {
   return props.theme.bs;
 }, function (props) {
   return props.theme.offWhite;
-}, function (props) {
-  return props.theme.offWhite;
 });
-/* harmony default export */ __webpack_exports__["default"] = (OrderStyles);
+/* harmony default export */ __webpack_exports__["default"] = (OrderItemStyles);
 
 /***/ }),
 
@@ -919,10 +834,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./pages/order.js":
-/*!************************!*\
-  !*** ./pages/order.js ***!
-  \************************/
+/***/ "./pages/orders.js":
+/*!*************************!*\
+  !*** ./pages/orders.js ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -931,8 +846,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_PleaseSignIn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PleaseSignIn */ "./components/PleaseSignIn.js");
-/* harmony import */ var _components_Order__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Order */ "./components/Order.js");
-var _jsxFileName = "/Users/shaneguittap/Desktop/WesBossApp/Advanced-React/sick-fits/frontend/pages/order.js";
+/* harmony import */ var _components_OrderList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/OrderList */ "./components/OrderList.js");
+var _jsxFileName = "/Users/shaneguittap/Desktop/WesBossApp/Advanced-React/sick-fits/frontend/pages/orders.js";
 
 
 
@@ -950,8 +865,7 @@ var OrderPage = function OrderPage(props) {
       lineNumber: 6
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Order__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    id: props.query.id,
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_OrderList__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -964,14 +878,14 @@ var OrderPage = function OrderPage(props) {
 
 /***/ }),
 
-/***/ 5:
-/*!******************************!*\
-  !*** multi ./pages/order.js ***!
-  \******************************/
+/***/ 3:
+/*!*******************************!*\
+  !*** multi ./pages/orders.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./pages/order.js */"./pages/order.js");
+module.exports = __webpack_require__(/*! ./pages/orders.js */"./pages/orders.js");
 
 
 /***/ }),
@@ -1009,14 +923,14 @@ module.exports = require("graphql-tag");
 
 /***/ }),
 
-/***/ "next/head":
+/***/ "next/link":
 /*!****************************!*\
-  !*** external "next/head" ***!
+  !*** external "next/link" ***!
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("next/head");
+module.exports = require("next/link");
 
 /***/ }),
 
@@ -1065,4 +979,4 @@ module.exports = require("styled-components");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=order.js.map
+//# sourceMappingURL=orders.js.map

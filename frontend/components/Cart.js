@@ -44,7 +44,8 @@ const Cart = () => (
             </CloseButton>
             <Supreme>{me.name}'s Cart</Supreme>
             <p>
-              You Have {me.cart.length} Item{me.cart.length === 1 ? '' : 's'} in your cart.
+              You Have {me.cart.length} Item{me.cart.length === 1 ? '' : 's'} in your cart.<br/>
+              Test Credit Card<br/>#4242 4242 4242 4242<br/>02/22 #222
             </p>
           </header>
           <ul>{me.cart.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}</ul>
